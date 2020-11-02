@@ -1,0 +1,46 @@
+
+<!-- <app-server></app-server>
+<app-server></app-server> -->
+<input type="text" 
+ class='form-control'
+ (input)="onInput($event)">
+<p [ngStyle]="{backgroundColor: pColor()}">{{ inputText }}</p>
+
+<input class='form-control' 
+type='text' [(ngModel)]="twoWayBindingText">
+<p>{{ twoWayBindingText }}</p>
+
+<button class="btn btn-primary"
+[disabled]="!twoWayBindingText" 
+(click)="onCreateServer()">
+Create Server</button>
+<p [class]="msgBgColor">{{ serverCreationStatus }} </p>
+<br><hr><br>
+<h2>Odd or Even</h2>
+<h3>ngif directive</h3>
+<p>use as *ngIf="some boolean expr" since it modifies dom</p>
+<h3 style="color:brown">odd is calculated using user defined structural directive appUnless</h3>
+<input type="number" class='form-control'
+[(ngModel)]="oddOrEven">
+<p *ngIf="oddOrEven%2===0">even</p>
+<p *appUnless="oddOrEven%2===0">odd</p>
+
+<h3>local reference odd even</h3>
+<input type="number" class="form-control" #inputRef>
+<button class="btn btn-primary" (click)="LocalRefOddEven(inputRef)">check</button>
+<p>{{ isOddOrEven }}</p>
+<hr>
+<p customDirective style="color: rgb(186, 226, 43);"> hover over me<br>This is styled using an user defined directive
+    create a new .directive.ts file and write the code inside then
+    add it to app modules just like a component.
+    Then you can use it as a directive.
+</p>
+<h3>ngSwitch goes below</h3>
+<div [ngSwitch]="value">
+    <p *ngSwitchCase="5">Value is 5</p>
+    <p *ngSwitchCase="10">Value is 10</p>
+    <p *ngSwitchCase="15">Value is 15</p>
+    <p *ngSwitchDefault>Value not multiple of 5</p>
+</div>
+
+
